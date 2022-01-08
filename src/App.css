@@ -4,3 +4,33 @@
   box-sizing: border-box;
 }
 
+body{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+/* 
+COLORS{
+  Primary: #FFFFFF;
+  color: #F2F2F4
+  Secondary;
+color: #1F2642;
+color: #343B55;
+Accent: #FE6E0E; can be used in => buttons / Popups / Highlights
+
+
+} */
+
+ .container {
+  display: flex;
+  height:8vh;
+  background-color:#F2F2F4;
+  justify-content: space-around;
+  align-items: center;
+  color: #1F2642;
+} 
+
+.image{
+  width: 5rem;
+  height: 5rem
+}
+
+

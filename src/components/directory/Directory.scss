@@ -1,0 +1,13 @@
+.directory-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+    
+
+
+}
+
+.directory-menu > *{
+    flex: 1 1 30%
+}
