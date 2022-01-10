@@ -1,6 +1,6 @@
 *{
   margin: 0;
-  padding: 0;
+  padding: 0 ;
   box-sizing: border-box;
 }
 
@@ -33,4 +33,14 @@ Accent: #FE6E0E; can be used in => buttons / Popups / Highlights
   height: 5rem
 }
 
+.routes{
+  display: flex;
+  background-color: red;
+;
 
+
+}
+
+.routes > div{
+  padding:1rem;
+}
