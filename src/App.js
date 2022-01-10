@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProductsGrid from "./components/ProductsGrid/Productsgrid";
 import Product from "./components/Product/Product";
 import ShopPage from "./pages/shop/ShopPage";
+import SignInAndSignOut from "./pages/sign-in-and sign-out/SignInAndSignUp";
 
 import img from "./Assets/logo.png";
 
@@ -30,7 +31,7 @@ function App() {
               <NavLink to="/">ORDER</NavLink>
             </div>
             <div>
-              <NavLink to="/products">PRODUCTS</NavLink>
+              <NavLink to="/sign-in">SIGN IN</NavLink>
             </div>
           </div>
         </nav>
@@ -40,6 +41,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:prodName" element={<Product/>} />
           <Route path="/shop" element={<ShopPage/>} />
+          <Route path='/sign-in' element={<SignInAndSignOut/>}/>
         </Routes>
       </main>
     </BrowserRouter>
