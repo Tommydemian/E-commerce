@@ -1,5 +1,8 @@
-import {initializeApp} from 'firebase'
 
+import firebase from 'firebase/compat/app';
+import {initializeApp} from 'firebase/app'
+import {getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore/lite'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBMaezwLw1NrZs4JM7Oso4NhVaEqyegZYU",
@@ -11,6 +14,17 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
+
+export const db = getFirestore(app)
+
+export const auth = getAuth(app) // app a la cual le pensamos setear la authentication.
+
+export const provider = new GoogleAuthProvider(auth)
+
+export const signInWithGoogle = () => signInWithPopup( auth, provider)
+ 
+
+
 
 
 
