@@ -4,26 +4,23 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProductsGrid from "./components/ProductsGrid/Productsgrid";
 import Product from "./components/Product/Product";
 import ShopPage from "./pages/shop/ShopPage";
-import SignInAndSignOut from "./pages/sign-in-and sign-out/SignInAndSignUp";
+import SignInAndSignUp from "./pages/sign-in-and sign-out/SignInAndSignUp";
 
 import img from "./Assets/logo.png";
 
 import { BrowserRouter, Route, Routes, Link, NavLink } from "react-router-dom";
 
-import {onAuthStateChanged} from 'firebase/auth'
+import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "./firebase/config";
 
 function App() {
-  
   const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user)=>setCurrentUser(user) )
-    console.log()
-  },[])
-
-
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => setCurrentUser(user));
+    console.log();
+  }, []); 
 
   return (
     <BrowserRouter>
@@ -35,18 +32,22 @@ function App() {
           <div>SearchBox</div>
           <div className="routes">
             <div>
-              <NavLink className={(navData) => navData.isActive} to="/">
+              <NavLink className='options' to="/">
                 HOME
               </NavLink>
             </div>
             <div>
-              <NavLink to="/shop">SHOP</NavLink>
+              <NavLink className='options' to="/shop">SHOP</NavLink>
             </div>
             <div>
-              <NavLink to="/">ORDER</NavLink>
+              <NavLink className='options' to="/">ORDER</NavLink>
             </div>
             <div>
-              <NavLink to="/sign-in">SIGN IN</NavLink>
+              {auth.currentUser ? (
+                <div onClick={() => auth.signOut()}>SIGN OUT</div>
+              ) : (
+                <NavLink className='options' to='/signin' >SIGN IN</NavLink> // Render condicional
+              )}
             </div>
           </div>
         </nav>
@@ -56,7 +57,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:prodName" element={<Product />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/sign-in" element={<SignInAndSignOut />} />
+          <Route path="/signin" element={<SignInAndSignUp />} />
         </Routes>
       </main>
     </BrowserRouter>

@@ -35,12 +35,13 @@ Accent: #FE6E0E; can be used in => buttons / Popups / Highlights
 
 .routes{
   display: flex;
-  background-color: red;
-;
-
-
+  cursor: pointer;
 }
 
 .routes > div{
   padding:1rem;
+}
+
+.options{
+  cursor:pointer;
 }

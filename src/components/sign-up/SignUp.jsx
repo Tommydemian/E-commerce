@@ -1,42 +1,47 @@
-import React, { useState } from 'react'
-import CustomButton from '../custom-button/CustomButton'
-import FormInput from '../form-input/FormInput'
+import React, { useState } from "react";
+import CustomButton from "../custom-button/CustomButton";
+import FormInput from "../form-input/FormInput";
 
-import './SignUp.scss'
+import "./SignUp.scss";
 
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import {auth} from '../../firebase/config' 
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
+import { auth } from "../../firebase/config"; // esta variable contiene info del user logueado
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({});
 
+  const handleSubmit = () => {};
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
-    const handleSubmit = () =>{
-
-    }
- 
-    const handleSignUp = (e) =>{
-       e.preventDefault()
-       createUserWithEmailAndPassword(auth, email, password)
-       .then((userCredentials) =>{
-           //Signed in 
-           const user = userCredentials.user
-           console.log(user)
-       }).catch((error) =>{
+  const register = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        //Signed in
+        const user = userCredentials.user; // Creando al usuario => Consecuencia del createUserWithEmailAndPassword
+        console.log(user);
+      })
+      .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-       })
-        }
+        const errorMessage = error.message; // Podria ser un email que no es formato de email. De todos modos es mas util en el Login
+      });
+  };
 
-    
+  onAuthStateChanged(auth, (currentUser)=>{
+    setUser(currentUser)
+  })
 
+  const logout = async () =>{
+    await signOut(auth)
+  }
 
-    return (
-        <div className="sign-up">
+  return (
+    <div className="sign-up">
       <h2>I all ready have an account</h2>
-      <span>Sign in with your email and password</span>
+
+
+      <h3>The user logued in is {user?.email}</h3>
 
       <form onSubmit={handleSubmit}>
         <label>Email</label>
@@ -44,7 +49,7 @@ const SignUp = () => {
           type="email"
           name="email"
           placeholder="Enter your email"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)} 
           required
         />
         <label>Password</label>
@@ -56,11 +61,13 @@ const SignUp = () => {
           required
         />
 
-        <CustomButton onClick={handleSignUp} type="submit">sign up</CustomButton>
-       {/*  <CustomButton onClick={handleSignUp} ></CustomButton> */}
+        <CustomButton onClick={register} type="submit">
+          sign up
+        </CustomButton>
+     <CustomButton onClick={logout} >SIGN OUT</CustomButton> 
       </form>
     </div>
-    )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
