@@ -1,0 +1,23 @@
+.profile__header{
+    display: flex;
+    justify-content:space-around;
+    width:100vw;
+    margin:1rem;
+
+}
+
+.profile__header .profile__header-text{
+    font-size:3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:500
+}
+
+.profile__header .logout{
+    width:6rem;
+    border-radius: 8px;
+    background-color: rgb(235, 125, 92) ;
+    font-weight:600;
+    border: none,
+
+
+}

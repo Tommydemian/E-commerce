@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    height:8vh;
+    background-color:#F2F2F4;
+    justify-content: space-around;
+    align-items: center;
+    color: #1F2642;
+  } 
+  
+  .image{
+    width: 5rem;
+    height: 5rem
+  }
+  
+  .routes{
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .routes > div{
+    padding:1rem;
+  }
+  
+  .options{
+    cursor:pointer;
+  }

@@ -18,19 +18,18 @@ $main-color: #ffffff;
   border-radius: 6px;
 
   &:hover {
-      background-color: #fb8e46;
-      border: 1px solid black;
-
+    background-color: #fb8e46;
+    border: 1px solid black;
   }
 
+  &.google-sign-in {
+    background-color: #4285f4;
+    color: white;
 
-&.google-sign-in {
-  background-color: #4285f4;
-  color: white;
-
-  &:hover {
-    background-color: #6395e6;
-    border: none;
+    &:hover {
+      background-color: #6395e6;
+      border: none;
+    }
   }
 }
-}
+
